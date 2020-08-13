@@ -49,6 +49,7 @@ public class LoginController {
 	public String showSignUpPage() {
 		return "signUp";
 	}
+	
 
 	@PostMapping("/signUp")
 	public String showSignUpRequest(@RequestParam String name, @RequestParam String password,

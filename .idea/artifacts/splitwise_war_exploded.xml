@@ -16,6 +16,10 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.21" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
+          <element id="library" level="project" name="Maven: org.webjars:bootstrap:4.5.0" />
+          <element id="library" level="project" name="Maven: org.webjars:popper.js:1.16.0" />
+          <element id="library" level="project" name="Maven: org.webjars:jquery:3.5.1" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.2.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.2.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.2.8.RELEASE" />
