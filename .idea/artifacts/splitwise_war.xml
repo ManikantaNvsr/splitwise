@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="splitwise:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>splitwise</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="splitwise-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="splitwise:war exploded" />
+    </root>
+  </artifact>
+</component>
