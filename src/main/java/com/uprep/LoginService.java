@@ -9,19 +9,20 @@ public class LoginService {
 	@Autowired
 	LoginDAO loginDAO;
 
-	public boolean isUserValid(String userName, String password) {
-		if (userName.equalsIgnoreCase("bul") && password.equalsIgnoreCase("dummy")) {
-			return true;
-		}
-		return false;
+	public String isUserValid(String email, String password) {
+		return loginDAO.isUserValid(email, password);
 	}
 
-	public boolean validateSignUpDetails(String userName, String password, String confirmPassword) {
+	public String validateSignUpDetails(String userName, String password, String confirmPassword, String email) {
 		if (password.equals(confirmPassword)) {
-			loginDAO.saveUser(userName, password, confirmPassword);
-			return true;
+			return loginDAO.saveUser(userName, password, email);
+		} else {
+			return "passwordfail";
 		}
-		return false;
+	}
+
+	public String getUserName(String email) {
+		return loginDAO.getUserName(email);
 	}
 
 }

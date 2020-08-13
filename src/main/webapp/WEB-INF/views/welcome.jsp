@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>Yahoo!!</title>
+<title>Welcome - Splitwise</title>
 </head>
-<body>Welcome ${name} 
+<body>Welcome Mr. ${name} 
 </body>
 </html>

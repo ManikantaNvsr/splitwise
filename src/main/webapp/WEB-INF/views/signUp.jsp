@@ -12,7 +12,7 @@
 		email : <input name="email" type="text" />
 		Password : <input name="password" type="password" />
 		Confirm Password : <input name="confirmPassword" type="password" />
-		 <input type="submit" />
+		 <input type="submit" value="Sign Up" />
 	</form>
 
 </body>

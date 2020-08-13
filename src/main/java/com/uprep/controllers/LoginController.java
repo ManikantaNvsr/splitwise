@@ -32,12 +32,11 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public String handleLoginRequest(@RequestParam String name, @RequestParam String password, Model theModel) {
-//		theModel.put("name", name); // this also works but it is model map
+	public String handleLoginRequest(@RequestParam String email, @RequestParam String password, Model theModel) {
 
 		// validate
-		if (loginService.isUserValid(name, password)) {
-			theModel.addAttribute("name", name);
+		if (loginService.isUserValid(email, password).equalsIgnoreCase("valid")) {
+			theModel.addAttribute("name", loginService.getUserName(email));
 			return "welcome";
 		} else {
 			theModel.addAttribute("errorMessage", "Invalid Credentials");
@@ -53,12 +52,22 @@ public class LoginController {
 
 	@PostMapping("/signUp")
 	public String showSignUpRequest(@RequestParam String name, @RequestParam String password,
-			@RequestParam String confirmPassword, Model theModel) {
+			@RequestParam String confirmPassword, @RequestParam String email, Model theModel) {
 
-		if (loginService.validateSignUpDetails(name, password, confirmPassword)) {
+		String status = loginService.validateSignUpDetails(name, password, confirmPassword, email);
+
+		if (status != null && status.equalsIgnoreCase("success")) {
+			theModel.addAttribute("name", name);
 			return "welcome";
+		} else if (status != null && status.equalsIgnoreCase("passwordfail")) {
+			theModel.addAttribute("errorMessage", "Password and Confirmed Password do not match.");
+		} else if (status != null && status.equalsIgnoreCase("duplicate")) {
+			theModel.addAttribute("errorMessage",
+					"Please make sure the email " + email + " is not registered already.");
+		} else {
+			theModel.addAttribute("errorMessage", "Unable to sign up the user: " + name);
 		}
-		theModel.addAttribute("errorMessage", "Password and Confirmed Password do not match");
+
 		return "signUp";
 	}
 
