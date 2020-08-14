@@ -1,4 +1,4 @@
-package com.uprep.resources;
+package com.uprep.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
