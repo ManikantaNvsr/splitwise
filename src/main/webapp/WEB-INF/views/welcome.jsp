@@ -10,7 +10,7 @@
 
 <div class="container">
 
-    <div style="background-color:#48be9d; height:100;" class="jumbotron">
+    <div style="background-color:#48be9d; height:100px;" class="jumbotron">
     <h4>${name}'s Dashboard</h4>
     <a class="btn btn-warning float-right" href="/logout">Logout</a>
     </div>
