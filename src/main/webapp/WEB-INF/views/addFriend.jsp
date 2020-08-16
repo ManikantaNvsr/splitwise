@@ -7,11 +7,14 @@
 </head>
 <body>
 <div class="container">
-    <h3>Add Your Friend</h3>
+    <h5>Add Your Friend</h5>
 
+    <p>
+        <span style="color: red; ">${errorMessage}</span>
+    </p>
     <form action="/add-friend" method="post">
         <label>Friend's Registered Email Address</label><br>
-        <input type="email" name="friendEmail" required="required"/><br>.<br>
+        <input type="email" name="friendEmail" required="required"/><br><br>
         <input class="btn btn-success" type="submit" value="Add">
     </form>
 </div>

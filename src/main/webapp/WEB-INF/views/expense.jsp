@@ -9,10 +9,13 @@
 <div class="container">
     <h3>Add an expense</h3>
 
-    <form action="/add-expense" method="post">
-        <input type="text" name="description" required="required"/> <input type="submit"
+
+    </div>
+
+    <%--<form action="/add-expense" method="post">
+        <input data-role="tagsinput" type="text" name="description" required="required"/> <input type="submit"
                                                        value="add">
-    </form>
+    </form>--%>
 </div>
 <script src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="webjars/jquery/3.5.1/jquery.min.js"></script>

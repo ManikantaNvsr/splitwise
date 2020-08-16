@@ -26,7 +26,7 @@ public class LoginDAO {
 
             preparedStatement.execute();
 
-            System.out.println("Inserted");
+            System.out.println("User Saved");
             status = "success";
 
         } catch (SQLException e) {

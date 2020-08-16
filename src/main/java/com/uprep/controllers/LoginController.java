@@ -87,6 +87,7 @@ public class LoginController {
 
 	@GetMapping("/welcome")
 	public String showDashBoard() {
+//		System.out.println("Inside welcome");
 		return "welcome";
 	}
 

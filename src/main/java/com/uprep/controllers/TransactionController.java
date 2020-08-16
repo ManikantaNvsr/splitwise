@@ -1,6 +1,7 @@
 package com.uprep.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,16 +44,18 @@ public class TransactionController {
 	}
 
 	@PostMapping("/add-friend")
-	public String saveFriend(@RequestParam String friendEmail, HttpServletRequest request, Model theModel) {
+	public String saveFriend(@RequestParam String friendEmail, HttpServletRequest request, HttpServletResponse response, Model theModel) {
 		/* System.out.println("Here: " + user.getName()); */
+//		System.out.println("I am here");
 		user.setEmail(request.getSession().getAttribute("email").toString());
 		user.setName(request.getSession().getAttribute("name").toString());
 		String status = transactionService.saveFriend(user, friendEmail);
 		if (status != null && status.equalsIgnoreCase("saved")) {
 			return "redirect:/welcome";
 		} else {
-			theModel.addAttribute("errorMessage", "Please make sure the email is registered.");
-			return "/add-friend";
+			theModel.addAttribute("errorMessage", "Please make sure the email is not registered already.");
+//			response.setStatus(512);
+			return "welcome";
 		}
 
 	}
