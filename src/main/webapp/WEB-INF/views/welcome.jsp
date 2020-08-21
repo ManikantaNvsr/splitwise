@@ -58,10 +58,10 @@
                         <p>
                             <span style="color: red; ">${errorMessage}</span>
                         </p>
-<%--                        <form>--%>
-                            <label>Friend's Registered Email Address</label><br>
-                            <input type="email" id="friendEmail" name="friendEmail" required="required"/><br><br>
-<%--                        </form>--%>
+                        <%--                        <form>--%>
+                        <label>Friend's Registered Email Address</label><br>
+                        <input type="email" id="friendEmail" name="friendEmail" required="required"/><br><br>
+                        <%--                        </form>--%>
                         <button class="btn btn-success" id="addFriend">Add</button>
 
                     </div>
@@ -111,16 +111,19 @@
 
 <script type="text/javascript">
 
-    function displayErrors(status) {
-        if (status == 512) {
-            alert("your friend's email address in not registered.")
-        }
-    }
-
     $("#addFriend").click(function () {
-        console.log("inside click function");
-        console.log($("#friendEmail").val());
-        $.post("/add-friend", {friendEmail: $("#friendEmail").val()}, )
+
+        $.ajax({
+            type: "POST",
+            url: "/add-friend",
+            data: {
+                friendEmail: $("#friendEmail").val()
+            },
+            success: function (data) {
+                alert(data);
+            }
+        });
+
     });
 
 </script>
