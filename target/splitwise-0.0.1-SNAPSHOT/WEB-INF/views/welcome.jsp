@@ -25,18 +25,36 @@
         <%--        <a class="btn btn-warning" href="/add-expense">Add an expense</a>--%>
         <%--        <a class="btn btn-primary" href="/add-friend">Add your friend</a>--%>
 
-        <button class="btn btn-warning" data-toggle="modal" data-target="#friendModal">Add your friend</button>
-        <button class="btn btn-warning" data-toggle="modal" data-target="#expenseModal">Add an expense</button>
+        <button class="btn btn-warning" id="addFriendButton" data-toggle="modal" data-target="#friendModal">Add your
+            friend
+        </button>
+        <button class="btn btn-warning" id="addExpenseButton" data-toggle="modal" data-target="#expenseModal">Add an
+            expense
+        </button>
 
         <!-- Add an Expense Modal -->
         <div class="modal" id="expenseModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <H5 class="modal-title"> Add an Expense</H5>
+                        <H5 class="modal-title">Add an Expense</H5>
                         <button class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
+
+                        <label>Amount</label><br>
+                        <input type="text" id="amount" name="amount" required="required"/><br><br>
+
+                        <div>
+                            <label>Share With</label><br>
+                            <input type="text" id="emailInput" placeholder="Friends Email...">
+                            <span id="emailAdd" class="btn btn-secondary">Add</span>
+                        </div>
+
+                        <ul id="myUL" style="list-style-type: none">
+                        </ul>
+
+                        <button class="btn btn-success" id="addExpense">Add Expense</button>
 
                     </div>
                     <div class="modal-footer">
@@ -55,9 +73,9 @@
                         <button class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>
+                        <%--<p>
                             <span style="color: red; ">${errorMessage}</span>
-                        </p>
+                        </p>--%>
                         <%--                        <form>--%>
                         <label>Friend's Registered Email Address</label><br>
                         <input type="email" id="friendEmail" name="friendEmail" required="required"/><br><br>
@@ -120,12 +138,43 @@
                 friendEmail: $("#friendEmail").val()
             },
             success: function (data) {
-                console.log(data);
+                alert(data);
             }
         });
 
     });
 
+
+    // Create a new list item when clicking on the "Add" button
+    $("#emailAdd").click(function () {
+        var liNode = document.createElement("li");
+        var inputEmail = document.getElementById("emailInput").value;
+        var textNode = document.createTextNode(inputEmail);
+        liNode.appendChild(textNode);
+        if (inputEmail === '') {
+            alert("You must enter a friends email to add expense!");
+        } else {
+            document.getElementById("myUL").appendChild(liNode);
+        }
+
+        document.getElementById("emailInput").value = "";
+        var spanNode = document.createElement("SPAN");
+        var closeSymbol = document.createTextNode("\u00D7");
+        spanNode.className = "close";
+        spanNode.appendChild(closeSymbol);
+        liNode.appendChild(spanNode);
+
+        var close = document.getElementsByClassName("close");
+
+        for (let i = 0; i < close.length; i++) {
+            close[i].onclick = function () {
+                var div = this.parentElement.parentNode;
+                div.removeChild(this.parentElement);
+            }
+        }
+
+
+    });
 </script>
 
 </body>
