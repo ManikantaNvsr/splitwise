@@ -150,6 +150,7 @@
         var liNode = document.createElement("li");
         var inputEmail = document.getElementById("emailInput").value;
         var textNode = document.createTextNode(inputEmail);
+        liNode.className = "emails";
         liNode.appendChild(textNode);
         if (inputEmail === '') {
             alert("You must enter a friends email to add expense!");
@@ -172,9 +173,21 @@
                 div.removeChild(this.parentElement);
             }
         }
-
-
     });
+
+    $("#addExpense").click(function () {
+        var amount = document.getElementById("amount");
+        var emails = new Array();
+        var emailList = document.getElementsByClassName("emails");
+        for (let i = 0; i < emailList.length; i++) {
+            let val = emailList[i].innerText;
+            emails.push(val.substring(0, val.length-1));
+        }
+        var data = {"amount": amount, "emails":emails};
+        var myJSON = JSON.stringify(data);
+        console.log(emails);
+    });
+
 </script>
 
 </body>
